@@ -25,7 +25,6 @@ public class JpaTest {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("mysql");
 		EntityManager managerr = factory.createEntityManager();
 		JpaTest test = new JpaTest(managerr);
-		
 		EntityTransaction tx = managerr.getTransaction();
 		tx.begin();
 		try {

@@ -23,6 +23,7 @@ public class Person {
 	public int id;
 	public String name;
 	public String firstname;
+	public String age;
 	public String email;
 	public List<Person> friends = new ArrayList<Person>();
 	public List<Home> homes = new ArrayList<Home>();
@@ -40,6 +41,14 @@ public class Person {
 		this.firstname = firstname;
 		this.email = email;
 	}
+	
+	public Person(String name, String firstname, String age, String email) {
+		this.name = name;
+		this.firstname = firstname;
+		this.age = age;
+		this.email = email;
+	}
+	
 	
 	/**
 	 * @return the id
@@ -86,6 +95,21 @@ public class Person {
 	 */
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
+	}
+	
+
+	/**
+	 * @return the age
+	 */
+	public String getAge() {
+		return age;
+	}
+
+	/**
+	 * @param age the age to set
+	 */
+	public void setAge(String age) {
+		this.age = age;
 	}
 
 	/**

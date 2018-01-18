@@ -71,8 +71,8 @@ public class JpaTest {
 	
 	private void createHome() {
 
-		int NbrEnrgPerson = manager.createQuery("SELECT a From Home a",Home.class).getResultList().size();
-		if(NbrEnrgPerson<=10) {
+		int NbrEnrgHome = manager.createQuery("SELECT a From Home a",Home.class).getResultList().size();
+		if(NbrEnrgHome<=10) {
 			Home studio = new Home(); 
 			studio.setNbrpiece("10");
 			studio.setTaille("100");

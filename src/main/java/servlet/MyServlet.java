@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name="mytest",urlPatterns={"/myurl"})
+
 public class MyServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -24,4 +25,5 @@ public class MyServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 	}	
+	
 }

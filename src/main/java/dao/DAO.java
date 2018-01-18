@@ -12,15 +12,16 @@ import domain.*;
  *
  */
 public interface DAO {
-	
-	public void CreateObjetInBase(Object object);
-	
+		
 	public List<Person> getAllPersons();
-	public Person getPerson(String id);
+	public Person getPerson(int id);
 	public List<Home> getAllHomes();
 	public List<Heater> getAllHeaters();
 	public List<ElectroDevice> getAllElectroDevices();
 	
 
-
+	public void CreatePerson(Person person);
+	public void CreateHome(Home home);
+	public void CreateHeater(Heater heater);
+	public void CreateElectro(ElectroDevice electroDevice);
 }

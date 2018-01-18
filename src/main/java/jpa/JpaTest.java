@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import domain.Person;
+import domain.*;
 
 public class JpaTest {
 
@@ -30,6 +30,8 @@ public class JpaTest {
 		try {
 			test.createPerson();
 			test.listPerson();
+			test.createHome();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -64,6 +66,17 @@ public class JpaTest {
 		System.out.println(listp.size());
 		for(Person person : listp) {
 			System.out.println(person.toString());
+		}
+	}
+	
+	private void createHome() {
+
+		int NbrEnrgPerson = manager.createQuery("SELECT a From Home a",Home.class).getResultList().size();
+		if(NbrEnrgPerson<=10) {
+			Home studio = new Home(); 
+			studio.setNbrpiece("10");
+			studio.setTaille("100");
+			manager.persist(studio);
 		}
 	}
 

@@ -157,6 +157,10 @@ public class Person {
 	public void setHomes(List<Home> homes) {
 		this.homes = homes;
 	}
+	
+	public void addHome(Home home) {
+		this.homes.add(home);
+	}
 
 	/**
 	 * @return the electrodevices
@@ -172,6 +176,10 @@ public class Person {
 	 */
 	public void setElectrodevices(List<ElectroDevice> electrodevices) {
 		this.electrodevices = electrodevices;
+	}
+	
+	public void addElectro(ElectroDevice electroDevice) {
+		this.electrodevices.add(electroDevice);
 	}
 	
 	public void addfriend(Person person) {

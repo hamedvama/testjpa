@@ -80,5 +80,9 @@ public class Home {
 	public void setHeaters(List<Heater> heaters) {
 		this.heaters = heaters;
 	}
+	
+	public void addHeater(Heater heater) {
+		this.heaters.add(heater);
+	}
 		
 }

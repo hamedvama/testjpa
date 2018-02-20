@@ -3,6 +3,7 @@
  */
 package domain;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
@@ -13,47 +14,23 @@ import javax.persistence.Id;
  *
  */
 @Entity
-@Table 
-public class ElectroDevice {
+@DiscriminatorValue(value="ElectonicDevice")
+public class ElectroDevice extends SmartDevice {
 	
-	public int id;
-	public String electro_name;
+	private String type;
 
 	/**
-	 * 
+	 * @return the type
 	 */
-	public ElectroDevice() {
-		// TODO Auto-generated constructor stub
+	public String getType() {
+		return type;
 	}
 
 	/**
-	 * @return the id
+	 * @param type the type to set
 	 */
-	@Id
-	@GeneratedValue
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the electro_name
-	 */
-	public String getElectro_name() {
-		return electro_name;
-	}
-
-	/**
-	 * @param electro_name the electro_name to set
-	 */
-	public void setElectro_name(String electro_name) {
-		this.electro_name = electro_name;
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	

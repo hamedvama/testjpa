@@ -24,6 +24,7 @@ import domain.ElectroDevice;
 import domain.Heater;
 import domain.Home;
 import domain.Person;
+import domain.SmartDevice;
 
 public class DAOImpl implements DAO {
 
@@ -39,11 +40,11 @@ public class DAOImpl implements DAO {
 
 		return resultList;
 	}
-	
-	public Person getPerson(String id) {
+
+	public Person getPerson(int id) {
 		// TODO Auto-generated method stub
 		Person person;
-		person = manager.createQuery("Select a From Home a where id =" + id, Person.class).getSingleResult();
+		person = manager.createQuery("Select a From Person a where id =" + id, Person.class).getSingleResult();
 		return person;
 	}
 
@@ -65,45 +66,72 @@ public class DAOImpl implements DAO {
 
 	public List<ElectroDevice> getAllElectroDevices() {
 		// TODO Auto-generated method stub
-		List<ElectroDevice> resultList = manager.createQuery("Select a From Electrodevice a", ElectroDevice.class).getResultList();
+		List<ElectroDevice> resultList = manager.createQuery("Select a From Electrodevice a", ElectroDevice.class)
+				.getResultList();
 		System.out.println("List of Electrodevice:" + resultList.size());
 
 		return resultList;
 	}
 
-	public void CreateObjetInBase(Object object) {
+	public void CreatePerson(Person person) {
 		// TODO Auto-generated method stub
-
-	}
-
-	@GET
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Person> getHome(@PathParam("id") String id) {
-		System.out.println("Get " + id);
-		List<Person> resultList = manager.createQuery("Select a From Home a where id =" + id, Person.class)
-				.getResultList();
-		System.out.println("List of Home:" + resultList.size());
-
-		return resultList;
-	}
-
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Person> postHome(JSONObject name) {
-		System.out.println("Post " + name);
-
 		tx.begin();
 		try {
-			Person p = new Person();
-			p.setName(name.getString("name"));
-			manager.persist(p);
+			manager.persist(person);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		tx.commit();
-		return getAllPersons();
 	}
 
-	
+	public Person findPersonById(int id) {
+		Person person = manager.find(Person.class, id);
+		return person;
+	}
+
+	public void CreateHome(Home home) {
+		// TODO Auto-generated method stub
+		tx.begin();
+
+		try {
+			manager.persist(home);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		tx.commit();
+	}
+
+	public Home findHomeById(int id) {
+		Home home = manager.find(Home.class, id);
+
+		return home;
+	}
+
+	public void CreateHeater(Heater heater) {
+		// TODO Auto-generated method stub
+		tx.begin();
+
+		try {
+			manager.persist(heater);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		tx.commit();
+	}
+
+	public void CreateElectro(ElectroDevice electroDevice) {
+		// TODO Auto-generated method stub
+		tx.begin();
+
+		try {
+			manager.persist(electroDevice);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		tx.commit();
+	}
+
+	public void deletePerson(int id) {
+		manager.createQuery("Delete From Person where id =" + id, Person.class).getResultList();
+	}
 }

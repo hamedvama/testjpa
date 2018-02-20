@@ -16,9 +16,9 @@ import javax.persistence.Entity;
  *
  */
 @Entity
-@DiscriminatorColumn(name="Type_Device")
-@DiscriminatorValue(value="SmartDevice")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "Type_Device")
+@DiscriminatorValue(value = "SmartDevice")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class SmartDevice {
 
 	private int id;
@@ -35,7 +35,8 @@ public class SmartDevice {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -49,7 +50,8 @@ public class SmartDevice {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -63,11 +65,11 @@ public class SmartDevice {
 	}
 
 	/**
-	 * @param puissance the puissance to set
+	 * @param puissance
+	 *            the puissance to set
 	 */
 	public void setPuissance(int puissance) {
 		this.puissance = puissance;
 	}
-	
-	
+
 }

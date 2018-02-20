@@ -131,5 +131,7 @@ public class DAOImpl implements DAO {
 		tx.commit();
 	}
 
-
+	public void deletePerson(int id) {
+		manager.createQuery("Delete From Person where id =" + id, Person.class).getResultList();
+	}
 }

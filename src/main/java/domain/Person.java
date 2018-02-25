@@ -7,24 +7,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-/**
- * @author Diakite
- *
- */
+
 @Entity
+
+
 public class Person {
 
 	public int id;
 	public String name;
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String firstname;
-	public String age;
 	public String email;
+	private String age;
+	public String getAge() {
+		return age;
+	}
+
+	public Person(String name, String firstname, String age) {
+	
+		this.name = name;
+		this.firstname = firstname;
+		this.age = age;
+	}
+
+	public Person(String name, String firstname, String email, String age) {
+		super();
+		this.name = name;
+		this.firstname = firstname;
+		this.email = email;
+		this.age = age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
 	public List<Person> friends = new ArrayList<Person>();
 	public List<Home> homes = new ArrayList<Home>();
 	public List<ElectroDevice> electrodevices = new ArrayList<ElectroDevice>();
@@ -35,21 +62,10 @@ public class Person {
 	public Person() {
 		// TODO Auto-generated constructor stub
 	}
+
 	
-	public Person(String name, String firstname, String email) {
-		this.name = name;
-		this.firstname = firstname;
-		this.email = email;
-	}
-	
-	public Person(String name, String firstname, String age, String email) {
-		this.name = name;
-		this.firstname = firstname;
-		this.age = age;
-		this.email = email;
-	}
-	
-	
+
+
 	/**
 	 * @return the id
 	 */
@@ -63,9 +79,7 @@ public class Person {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+
 
 	/**
 	 * @return the name
@@ -97,20 +111,6 @@ public class Person {
 		this.firstname = firstname;
 	}
 	
-
-	/**
-	 * @return the age
-	 */
-	public String getAge() {
-		return age;
-	}
-
-	/**
-	 * @param age the age to set
-	 */
-	public void setAge(String age) {
-		this.age = age;
-	}
 
 	/**
 	 * @return the email
@@ -145,7 +145,7 @@ public class Person {
 	/**
 	 * @return the homes
 	 */
-	@OneToMany
+	@OneToMany(fetch=FetchType.LAZY)
 	@JoinColumn(name="Id_Person")
 	public List<Home> getHomes() {
 		return homes;
@@ -165,7 +165,7 @@ public class Person {
 	/**
 	 * @return the electrodevices
 	 */
-	@OneToMany
+	@OneToMany(fetch=FetchType.LAZY)
 	@JoinColumn(name="Id_Person")
 	public List<ElectroDevice> getElectrodevices() {
 		return electrodevices;

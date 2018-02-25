@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -18,8 +19,12 @@ import domain.Person;
 
 @WebServlet(name = "userinfo", urlPatterns = { "/UserInfo" })
 
-public class UserInfo extends HttpServlet {
+public class UserInfo extends HttpServlet  {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private EntityManager manager;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +34,7 @@ public class UserInfo extends HttpServlet {
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
 
-		createUser(request.getParameter("name"), request.getParameter("firstname"), request.getParameter("age"), "");
+		createUser(request.getParameter("name"), request.getParameter("firstname"), request.getParameter("age"));
 
 		tx.commit();
 		
@@ -65,8 +70,8 @@ public class UserInfo extends HttpServlet {
 //		out.println("</BODY></HTML>");
 //	}
 
-	public void createUser(String nom, String prenom, String age, String email) {
-		Person user = new Person(nom, prenom, age, email);
+	public void createUser(String nom, String prenom, String age) {
+		Person user = new Person(nom, prenom,age);
 		manager.persist(user);
 	}
 }

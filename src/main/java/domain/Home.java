@@ -7,20 +7,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 /**
- * @author Diakite
+ * @author nevissa
  *
  */
-@Entity
-public class Home {
 
+@Entity
+@Table(name = "home")   
+
+/** named query*/
+
+@NamedQuery(name = "findAllHome", query ="select h from Home h")  
+public class Home {
+   
 	public int id;
-	public String taille;
-	public String nbrpiece;
+	public int taille;
+	public int nbrpiece;
 	public List<Heater> heaters = new ArrayList<Heater>();
 	/**
 	 * 
@@ -39,37 +48,35 @@ public class Home {
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	/**
 	 * @return the taille
 	 */
-	public String getTaille() {
+	public int  getTaille() {
 		return taille;
 	}
 	/**
 	 * @param taille the taille to set
 	 */
-	public void setTaille(String taille) {
+	public void setTaille(int taille) {
 		this.taille = taille;
 	}
 	/**
 	 * @return the nbrpiece
 	 */
-	public String getNbrpiece() {
+	public int getNbrpiece() {
 		return nbrpiece;
 	}
 	/**
 	 * @param nbrpiece the nbrpiece to set
 	 */
-	public void setNbrpiece(String nbrpiece) {
+	public void setNbrpiece(int nbrpiece) {
 		this.nbrpiece = nbrpiece;
 	}
 	/**
 	 * @return the heaters
 	 */
-	@OneToMany
+	@OneToMany(fetch=FetchType.LAZY)
 	@JoinColumn(name="Id_Home")
 	public List<Heater> getHeaters() {
 		return heaters;
@@ -81,6 +88,9 @@ public class Home {
 		this.heaters = heaters;
 	}
 	
+	public void setId(int id) {
+		this.id = id;
+	}
 	public void addHeater(Heater heater) {
 		this.heaters.add(heater);
 	}

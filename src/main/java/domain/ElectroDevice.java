@@ -5,22 +5,22 @@ package domain;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
-import javax.persistence.Id;
+
 
 /**
- * @author Diakite
+ * @author nevissa
  *
  */
-@Entity
-@DiscriminatorValue(value="ElectonicDevice")
-public class ElectroDevice extends SmartDevice {
+
+ @Entity
+ @DiscriminatorValue(value="electronique")
+public class ElectroDevice extends SmartDevices{
 	
 	private String type;
-
+	
 	/**
-	 * @return the type
+	 * @return
+	 *            the type
 	 */
 	public String getType() {
 		return type;

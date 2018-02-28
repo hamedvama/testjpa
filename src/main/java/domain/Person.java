@@ -2,6 +2,8 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -131,7 +133,8 @@ public class Person {
 	/**
 	 * @return the friends
 	 */
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY, cascade =CascadeType.ALL)
+	@JoinColumn(name="friend")
 	public List<Person> getFriends() {
 		return friends;
 	}
@@ -147,7 +150,7 @@ public class Person {
 	/**
 	 * @return the homes
 	 */
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, cascade =CascadeType.ALL)
 	@JoinColumn(name = "Id_Person")
 	public List<Home> getHomes() {
 		return homes;
@@ -168,7 +171,7 @@ public class Person {
 	/**
 	 * @return the electrodevices
 	 */
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "Id_Person")
 	public List<ElectroDevice> getElectrodevices() {
 		return electrodevices;

@@ -19,7 +19,7 @@ public class PersonDaoImpl implements PersonDao {
 	 * Persist person in the database
 	 * 
 	 * @param person
-	 * 				person to persist
+	 *            person to persist
 	 */
 	public void Ajouter(Person person) {
 
@@ -49,13 +49,39 @@ public class PersonDaoImpl implements PersonDao {
 	 * Find person by Id
 	 * 
 	 * @param id
-	 * 			id of person to find
+	 *            id of person to find
 	 * @return Person
 	 * 
 	 */
 	public Person findOne(int id) {
 
-		return manager.find(Person.class, id);
+		Person p = manager.find(Person.class, id);
+		System.err.println(p.toString());
+		return p;
+	}
+
+	/**
+	 * @param id
+	 *            id of person to update
+	 */
+	public void updatePerson(Person person) {
+		// Person p = manager.find(Person.class, id);
+		// if(!nom.equals("")) { p.setName(nom);}
+		// if(!prenom.equals("")) {p.setFirstname(prenom);}
+		// if(!mail.equals("")) {p.setEmail(mail);}
+		// p.setFirstname("dudu");
+
+		manager.merge(person);
+	}
+
+	/**
+	 * @param id
+	 *            id of person to delete
+	 */
+	public void deletePerson(int id) {
+		Person p = manager.find(Person.class, id);
+		manager.remove(p);
+		System.err.println("dans le DAOimpl id: " + id);
 	}
 
 }

@@ -14,7 +14,7 @@ import domain.ElectroDevice;
 
 /**
  * 
- * @author Diakite
+ * @author Diakite, nevissa
  *
  */
 public class ElectroDaoImpl implements DeviceDao {
@@ -27,7 +27,7 @@ public class ElectroDaoImpl implements DeviceDao {
 	 * Persit electrodevice in the database
 	 * 
 	 * @param electro
-	 * 						electrodevice to persist
+	 *            electrodevice to persist
 	 */
 
 	public void Ajouter(ElectroDevice electro) {
@@ -45,8 +45,7 @@ public class ElectroDaoImpl implements DeviceDao {
 	/**
 	 * Get electrodevice list using criteria api
 	 * 
-	 * @return electronics
-	 * 						ElectroDevice list
+	 * @return electronics ElectroDevice list
 	 */
 
 	public List<ElectroDevice> getAll() {
@@ -61,33 +60,32 @@ public class ElectroDaoImpl implements DeviceDao {
 
 	/**
 	 * Find electrodevice by Id
-	 * @return ElectroDevice 
+	 * 
+	 * @return ElectroDevice
 	 * @param id
-	 * 			id of electrodevice to find
+	 *            id of electrodevice to find
 	 * 
 	 */
 
 	public ElectroDevice findOne(int id) {
 		return manager.find(ElectroDevice.class, id);
-
 	}
 
 	/**
 	 * @param id
-	 * 			id of electrodevice to update
+	 *            id of electrodevice to update
 	 */
 	public void updateElectro(int id) {
 	
-		
 	}
 
 	/**
-	 * @param
-	 * 			id of electrodevice to delete
+	 * @param id
+	 *            id of electrodevice to delete
 	 */
-	public void deleleElectro(int id) {
+	public void deleteElectro(int id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

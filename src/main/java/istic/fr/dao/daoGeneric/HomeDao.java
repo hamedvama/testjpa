@@ -7,7 +7,7 @@ import domain.Home;
 public interface HomeDao {
 	/**
 	 * @param heater
-	 * 				heater to persist
+	 *            heater to persist
 	 */
 	public void Ajouter(Home heater);
 
@@ -19,9 +19,23 @@ public interface HomeDao {
 	/**
 	 * @return Home
 	 * @param id
-	 * 			id of home to find
+	 *            id of home to find
 	 */
 
 	public Home findOne(int id);
+
+	/**
+	 * 
+	 * @param id
+	 *            id of Home to update
+	 */
+	public void updateHome(int id);
+
+	/**
+	 * 
+	 * @param id
+	 *            id of home to delete
+	 */
+	public void deleteHome(int id);
 
 }

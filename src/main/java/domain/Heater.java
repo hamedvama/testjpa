@@ -1,6 +1,12 @@
 package domain;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+
+/**
+ * 
+ * @author Diakite, nevissa
+ *
+ */
 @Entity
 @DiscriminatorValue(value="chauffage")
 public class Heater  extends SmartDevices {
@@ -23,7 +29,5 @@ public class Heater  extends SmartDevices {
 	public void setVolume(int volume) {
 		this.volume = volume;
 	}
-	
-	
 	
 }

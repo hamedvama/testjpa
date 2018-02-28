@@ -5,24 +5,24 @@ import java.util.List;
 import domain.Person;
 
 public interface PersonDao {
-	
+
 	/**
-	 * persist
-	 * person
+	 * @param person
+	 * 				person to persist
+	 * 
 	 */
-public void Ajouter(Person person) ;
+	public void Ajouter(Person person);
 
-/**
- * @return
- * All person
- */
-public List<Person>getAll();
+	/**
+	 * @return All person
+	 */
+	public List<Person> getAll();
 
-
-/**
- * Find person by id
- *            
- */
-public Person findOne(int id);
+	/**
+	 * @return Person
+	 * @param id
+	 * 			id of person to find
+	 */
+	public Person findOne(int id);
 
 }

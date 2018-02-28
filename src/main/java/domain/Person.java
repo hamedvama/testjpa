@@ -1,11 +1,7 @@
-/**
- * 
- */
 package domain;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,27 +10,31 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-
+/**
+ * 
+ * @author Diakite,nevissa
+ *
+ */
 @Entity
-
-
 public class Person {
 
 	public int id;
 	public String name;
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String firstname;
 	public String email;
 	private String age;
-	public String getAge() {
-		return age;
+	public List<Person> friends = new ArrayList<Person>();
+	public List<Home> homes = new ArrayList<Home>();
+	public List<ElectroDevice> electrodevices = new ArrayList<ElectroDevice>();
+
+	/**
+	 * constructor
+	 */
+	public Person() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Person(String name, String firstname, String age) {
-	
 		this.name = name;
 		this.firstname = firstname;
 		this.age = age;
@@ -47,24 +47,6 @@ public class Person {
 		this.email = email;
 		this.age = age;
 	}
-
-	public void setAge(String age) {
-		this.age = age;
-	}
-
-	public List<Person> friends = new ArrayList<Person>();
-	public List<Home> homes = new ArrayList<Home>();
-	public List<ElectroDevice> electrodevices = new ArrayList<ElectroDevice>();
-
-	/**
-	 * 
-	 */
-	public Person() {
-		// TODO Auto-generated constructor stub
-	}
-
-	
-
 
 	/**
 	 * @return the id
@@ -80,6 +62,9 @@ public class Person {
 	 *            the id to set
 	 */
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	/**
 	 * @return the name
@@ -110,7 +95,6 @@ public class Person {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-	
 
 	/**
 	 * @return the email
@@ -128,6 +112,23 @@ public class Person {
 	}
 
 	/**
+	 * 
+	 * @return the age
+	 */
+	public String getAge() {
+		return age;
+	}
+
+	/**
+	 * 
+	 * @param age
+	 *            the age to set
+	 */
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	/**
 	 * @return the friends
 	 */
 	@ManyToMany
@@ -136,7 +137,8 @@ public class Person {
 	}
 
 	/**
-	 * @param friends the friends to set
+	 * @param friends
+	 *            the friends to set
 	 */
 	public void setFriends(List<Person> friends) {
 		this.friends = friends;
@@ -145,19 +147,20 @@ public class Person {
 	/**
 	 * @return the homes
 	 */
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="Id_Person")
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Id_Person")
 	public List<Home> getHomes() {
 		return homes;
 	}
 
 	/**
-	 * @param homes the homes to set
+	 * @param homes
+	 *            the homes to set
 	 */
 	public void setHomes(List<Home> homes) {
 		this.homes = homes;
 	}
-	
+
 	public void addHome(Home home) {
 		this.homes.add(home);
 	}
@@ -165,27 +168,40 @@ public class Person {
 	/**
 	 * @return the electrodevices
 	 */
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="Id_Person")
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Id_Person")
 	public List<ElectroDevice> getElectrodevices() {
 		return electrodevices;
 	}
 
 	/**
-	 * @param electrodevices the electrodevices to set
+	 * @param electrodevices
+	 *            the electrodevices to set
 	 */
 	public void setElectrodevices(List<ElectroDevice> electrodevices) {
 		this.electrodevices = electrodevices;
 	}
-	
+
+	/**
+	 * add one electrodevice to the electrodevice list
+	 * 
+	 * @param electroDevice
+	 * 						add to the electrodevices list
+	 */
 	public void addElectro(ElectroDevice electroDevice) {
 		this.electrodevices.add(electroDevice);
 	}
-	
+
+	/**
+	 * add one friend to the friends list
+	 * 
+	 * @param person
+	 * 				add to the friends list
+	 */
 	public void addfriend(Person person) {
 		this.friends.add(person);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Person [id =" + id + ", name=" + name + ", firstname =" + firstname + ", Email = " + email + "]";

@@ -14,42 +14,63 @@ import domain.Home;
 import istic.fr.dao.daoGeneric.HomeDao;
 import istic.fr.dao.daoImpl.HomeDaoImp;
 
+/**
+ * 
+ * @author Diakite, nevissa
+ *
+ */
 @Path("/hello_Homes")
-
 public class SerHome {
-	private HomeDao daoH= new HomeDaoImp();
-	//create home
-	
+	private HomeDao daoH = new HomeDaoImp();
+
+	/**
+	 * create home
+	 * 
+	 * @param taille
+	 *            home taille
+	 * @param nbrPieces
+	 *            home nbrpieces
+	 * @return Home
+	 */
 	@POST
- 	@Path("/createHome")
-    @Produces(MediaType.APPLICATION_JSON)
- 	@Consumes("application/x-www-form-urlencoded")
-	
-     public Home ajouter(@FormParam("taille")int taille,@FormParam("nbrPieces")int nbrPieces) {
-     Home home= new Home();
-     home.setTaille(taille);
-     home.setNbrpiece(nbrPieces);  
-     this.daoH.Ajouter(home);
-     return home;
-      }
-	
-	
-	// return list of homes
-	
+	@Path("/createHome")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/x-www-form-urlencoded")
+
+	public Home ajouter(@FormParam("taille") int taille, @FormParam("nbrPieces") int nbrPieces) {
+		Home home = new Home();
+		home.setTaille(taille);
+		home.setNbrpiece(nbrPieces);
+		this.daoH.Ajouter(home);
+		return home;
+	}
+
+	/**
+	 * @return list of homes
+	 * 
+	 */
+
 	@GET
 	@Path("/Homes")
-    @Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<Home> getAll() {
 		return daoH.getAll();
-		}
-     
-	// get home by id
+	}
+
+	/**
+	 * get home by id
+	 * 
+	 * @param id
+	 *            id of home to find
+	 * 
+	 * @return home
+	 */
 
 	@GET
 	@Path("/Homes/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Home findOne(@PathParam(value="id")int id) {
+	public Home findOne(@PathParam(value = "id") int id) {
 		return daoH.findOne(id);
-		}
+	}
 
 }

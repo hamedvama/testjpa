@@ -28,7 +28,7 @@ public class HeaterDaoImpl implements HeaterDao {
 	 * Persit heater in the database
 	 * 
 	 * @param heater
-	 * 				heater to persist
+	 *            heater to persist
 	 */
 	public void Ajouter(Heater heater) {
 
@@ -45,7 +45,7 @@ public class HeaterDaoImpl implements HeaterDao {
 	/**
 	 * Get heaters list using criteria api
 	 * 
-	 *@return heaters
+	 * @return heaters
 	 */
 	public List<Heater> getAll() {
 
@@ -62,12 +62,29 @@ public class HeaterDaoImpl implements HeaterDao {
 	/**
 	 * Find a heater by Id
 	 * 
-	 * @param id 
-	 * 			id of Heater to find
+	 * @param id
+	 *            id of Heater to find
 	 * @return Heater
 	 */
 	public Heater findOne(int id) {
 		return manager.find(Heater.class, id);
+	}
+
+	/**
+	 * @param id
+	 *            id of heater to update
+	 */
+	public void updateHeater(int id) {
+
+	}
+
+	/**
+	 * @param id
+	 *            id of heater to delete
+	 */
+	public void deleteHeater(int id) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

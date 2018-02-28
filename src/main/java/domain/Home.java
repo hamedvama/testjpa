@@ -2,6 +2,8 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -86,7 +88,7 @@ public class Home {
 	/**
 	 * @return heaters
 	 */
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
 	@JoinColumn(name = "Id_Home")
 	public List<Heater> getHeaters() {
 		return heaters;

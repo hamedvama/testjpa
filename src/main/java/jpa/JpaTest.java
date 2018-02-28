@@ -42,13 +42,10 @@ public class JpaTest {
 	}
 
 	public void createPerson() {
-		int NbrEnrgPerson = manager.createQuery("SELECT a From Person a", Person.class).getResultList().size();
-
 		/**
-		 * Creer des personnes si le nombre d'enregistrement dans la table est inferieur
-		 * ou eagle a 10
+		 * Creer des personnes dans la table
+		 * 
 		 */
-		if (NbrEnrgPerson <= 10) {
 			Person vama = new Person("Diakite", "Hamed", "15");
 			Person gatien = new Person("Anoh", "abbah", "23");
 
@@ -57,12 +54,13 @@ public class JpaTest {
 			/* persister dans la base */
 			manager.persist(vama);
 			manager.persist(gatien);
-		}
+			int NbrEnrgPerson = manager.createQuery("SELECT a From Person a", Person.class).getResultList().size();
+			System.err.println("nombre de personne dans la base : " + NbrEnrgPerson);
 	}
 
 	/**
-	 * utilisation de Criteria pour effectuer la requete de selection des personnes
-	 * dans la table
+	 * utilisation de Criteria pour effectuer la requete de selection des personnes dans la table
+	 * 
 	 */
 	public void listPerson() {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
@@ -75,11 +73,14 @@ public class JpaTest {
 		for (Person person : Persons) {
 			System.out.println(person.toString());
 		}
+		
+		
+		/*int id =1;
+		Person p = manager.find(Person.class, id);
+		manager.remove(p);*/
 	}
 
 	public void createHome() {
-		int NbrEnrgPerson = manager.createQuery("SELECT a From Home a", Home.class).getResultList().size();
-		if (NbrEnrgPerson <= 10) {
 			Home studio = new Home();
 			studio.setNbrpiece(10);
 			studio.setTaille(100);
@@ -88,7 +89,8 @@ public class JpaTest {
 			studio2.setNbrpiece(20);
 			studio2.setTaille(105);
 			manager.persist(studio2);
-		}
+			int NbrEnrg = manager.createQuery("SELECT a From Home a", Home.class).getResultList().size();
+			System.err.println("nombre de personnes dans la base " + NbrEnrg);
 	}
 
 	public void ListHomes() {

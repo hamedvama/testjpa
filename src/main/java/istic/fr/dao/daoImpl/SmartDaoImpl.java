@@ -19,7 +19,7 @@ public class SmartDaoImpl implements SmartDao {
 	 * Persist smartdevice
 	 * 
 	 * @param smart
-	 * 					smartdevice to persist
+	 * 				smartdevice to persist
 	 * 
 	 */
 
@@ -56,6 +56,23 @@ public class SmartDaoImpl implements SmartDao {
 
 	public SmartDevices findOne(int id) {
 		return manager.find(SmartDevices.class, id);
+
+	}
+	
+	/**
+	 * @param id
+	 *            id of smart to update
+	 */
+	public void updateSmart(int id) {
+
+	}
+
+	/**
+	 * @param id
+	 *            id of smart to delete
+	 */
+	public void deleteSmart(int id) {
+		
 
 	}
 

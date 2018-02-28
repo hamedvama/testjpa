@@ -56,5 +56,22 @@ public class HomeDaoImp implements HomeDao {
 	public Home findOne(int id) {
 		return manager.find(Home.class, id);
 	}
+	
+	/**
+	 * @param id
+	 *            id of home to update
+	 */
+	public void updateHome(int id) {
+		
+	}
+
+	/**
+	 * @param id
+	 *            id of home to delete
+	 */
+	public void deleteHome(int id) {
+		
+
+	}
 
 }

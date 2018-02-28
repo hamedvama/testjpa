@@ -8,7 +8,7 @@ public interface PersonDao {
 
 	/**
 	 * @param person
-	 * 				person to persist
+	 *            person to persist
 	 * 
 	 */
 	public void Ajouter(Person person);
@@ -21,8 +21,21 @@ public interface PersonDao {
 	/**
 	 * @return Person
 	 * @param id
-	 * 			id of person to find
+	 *            id of person to find
 	 */
 	public Person findOne(int id);
 
+	/**
+	 * 
+	 * @param id
+	 *            id of person to update
+	 */
+	public void updatePerson(Person person);
+
+	/**
+	 * 
+	 * @param id
+	 *            id of person to delete
+	 */
+	public void deletePerson(int id);
 }

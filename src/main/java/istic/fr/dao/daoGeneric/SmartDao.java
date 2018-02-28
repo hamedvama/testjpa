@@ -7,7 +7,7 @@ import domain.SmartDevices;
 public interface SmartDao {
 	/**
 	 * @param smart
-	 * 				smartDevices to persist
+	 *            smartDevices to persist
 	 */
 	public void Ajouter(SmartDevices smart);
 
@@ -19,9 +19,23 @@ public interface SmartDao {
 	/**
 	 * @return SmartDevices
 	 * @param id
-	 * 			id of smartdevices to find
+	 *            id of smartdevices to find
 	 * 
 	 */
 	public SmartDevices findOne(int id);
+
+	/**
+	 * 
+	 * @param id
+	 *            id of smartDevice to update
+	 */
+	public void updateSmart(int id);
+
+	/**
+	 * 
+	 * @param id
+	 *            id of smartDevice to delete
+	 */
+	public void deleteSmart(int id);
 
 }

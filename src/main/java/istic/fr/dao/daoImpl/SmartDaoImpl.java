@@ -6,52 +6,57 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-
-import domain.SmartDevices;
 import istic.fr.dao.daoGeneric.SmartDao;
+import domain.SmartDevices;
 
-public class SmartDaoImpl implements SmartDao{
-	
+public class SmartDaoImpl implements SmartDao {
 
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("mysql");
-
 	EntityManager manager = factory.createEntityManager();
-
 	EntityTransaction transaction = manager.getTransaction();
-	
-   
-	//PERSIST SMARTDEVICE
-	
+
+	/**
+	 * Persist smartdevice
+	 * 
+	 * @param smart
+	 * 					smartdevice to persist
+	 * 
+	 */
+
 	public void Ajouter(SmartDevices smart) {
-		
+
 		transaction.begin();
 		try {
-		 manager.persist(smart);
-		 transaction.commit();	
-		}
-		catch(Exception e) 
-		{
+			manager.persist(smart);
+			transaction.commit();
+		} catch (Exception e) {
 			transaction.rollback();
 			e.printStackTrace();
-		}}
-		
-   // GET SMARTDEVICES LIST WITH HQL
+		}
+	}
+
+	/**
+	 * Get smartdevice list using hql
+	 * 
+	 * @return Devices
+	 */
 
 	public List<SmartDevices> getAll() {
-		List<SmartDevices> Devices= manager.createQuery("Select s From SmartDevices s",SmartDevices.class).getResultList();
-        return Devices; 
+		List<SmartDevices> Devices = manager.createQuery("Select s From SmartDevices s", SmartDevices.class).getResultList();
+		return Devices;
 	}
 
-	//FIND SMARTDEVICE WITH HQL
-	
+	/***
+	 * Find smartdevice by Id
+	 * 
+	 * @param id
+	 * 			id of SmartDevice to find
+	 * @return SmartDevices
+	 */
+
 	public SmartDevices findOne(int id) {
-	 return manager.find(SmartDevices.class, id);
+		return manager.find(SmartDevices.class, id);
 
 	}
-
-	
-
-
-
 
 }

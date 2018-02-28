@@ -6,22 +6,22 @@ import domain.SmartDevices;
 
 public interface SmartDao {
 	/**
-	 * persist
-	 *  smartDevices
+	 * @param smart
+	 * 				smartDevices to persist
 	 */
-	public void Ajouter(SmartDevices smart) ;	
-	
+	public void Ajouter(SmartDevices smart);
+
 	/**
-	 * @return
-	 *  All smartDevices
+	 * @return All smartDevices
 	 */
-	public List<SmartDevices>getAll();
-	
-	
+	public List<SmartDevices> getAll();
+
 	/**
-	 * find smartDevices by id
-	 *            
+	 * @return SmartDevices
+	 * @param id
+	 * 			id of smartdevices to find
+	 * 
 	 */
 	public SmartDevices findOne(int id);
-	
+
 }

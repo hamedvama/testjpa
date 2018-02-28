@@ -6,24 +6,22 @@ import domain.Home;
 
 public interface HomeDao {
 	/**
-	 * persist
-	 *   home
+	 * @param heater
+	 * 				heater to persist
 	 */
-public void Ajouter(Home heater) ;
+	public void Ajouter(Home heater);
 
-/**
- * @return
- *   All homes
- */
-public List<Home>getAll();
+	/**
+	 * @return All homes
+	 */
+	public List<Home> getAll();
 
-/**
- * find
- *  home by id
- */
+	/**
+	 * @return Home
+	 * @param id
+	 * 			id of home to find
+	 */
 
-public Home findOne(int id);
-
-
+	public Home findOne(int id);
 
 }

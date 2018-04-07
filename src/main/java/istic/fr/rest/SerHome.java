@@ -3,6 +3,7 @@ package istic.fr.rest;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -35,12 +36,8 @@ public class SerHome {
 	@POST
 	@Path("/createHome")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes("application/x-www-form-urlencoded")
-
-	public Home ajouter(@FormParam("taille") int taille, @FormParam("nbrPieces") int nbrPieces) {
-		Home home = new Home();
-		home.setTaille(taille);
-		home.setNbrpiece(nbrPieces);
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Home ajouter(Home home) {
 		this.daoH.Ajouter(home);
 		return home;
 	}
@@ -49,9 +46,7 @@ public class SerHome {
 	 * @return list of homes
 	 * 
 	 */
-
 	@GET
-	@Path("/Homes")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Home> getAll() {
 		return daoH.getAll();
@@ -72,5 +67,19 @@ public class SerHome {
 	public Home findOne(@PathParam(value = "id") int id) {
 		return daoH.findOne(id);
 	}
+	
+	/**
+	 * delete Home by id
+	 * @param id
+	 * 			id home to delete
+	 */
+	@DELETE
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public void deleteHome(@PathParam(value = "id") int id) {
+		System.out.println("supprimer");
+		daoH.deleteHome(id);
+	}
+	
 
 }

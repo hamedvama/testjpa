@@ -70,7 +70,6 @@ public class PersonDaoImpl implements PersonDao {
 		// if(!prenom.equals("")) {p.setFirstname(prenom);}
 		// if(!mail.equals("")) {p.setEmail(mail);}
 		// p.setFirstname("dudu");
-
 		manager.merge(person);
 	}
 
@@ -79,9 +78,13 @@ public class PersonDaoImpl implements PersonDao {
 	 *            id of person to delete
 	 */
 	public void deletePerson(int id) {
-		Person p = manager.find(Person.class, id);
-		manager.remove(p);
-		System.err.println("dans le DAOimpl id: " + id);
+		Person person;
+		person = manager.find(Person.class, id);
+		if(person != null) {
+			manager.getTransaction().begin();
+			manager.remove(person);
+			manager.getTransaction().commit();
+		}
 	}
 
 }

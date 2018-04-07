@@ -70,8 +70,13 @@ public class HomeDaoImp implements HomeDao {
 	 *            id of home to delete
 	 */
 	public void deleteHome(int id) {
-		
-
+		Home home ;
+		home = manager.find(Home.class, id);
+		if(home != null) {
+			manager.getTransaction().begin();
+			manager.remove(home);
+			manager.getTransaction().commit();
+		}
 	}
 
 }

@@ -3,7 +3,7 @@ package istic.fr.rest;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
-
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -36,14 +36,9 @@ public class SerDevice {
 	@POST
 	@Path("/createElectro")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes("application/x-www-form-urlencoded")
+	@Consumes(MediaType.APPLICATION_JSON)
 
-	public ElectroDevice ajouter(@FormParam("type") String type, @FormParam("puissance") int puissance,
-			@FormParam("name") String name) {
-		ElectroDevice electro = new ElectroDevice();
-		electro.setType(type);
-		electro.setPuissance(puissance);
-		electro.setName(name);
+	public ElectroDevice ajouter(ElectroDevice electro) {
 		dao.Ajouter(electro);
 		return electro;
 	}
@@ -54,7 +49,6 @@ public class SerDevice {
 	 * 				of electroDevices
 	 */
 	@GET
-	@Path("/Electros")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<ElectroDevice> getAll() {
 		return dao.getAll();
@@ -72,6 +66,14 @@ public class SerDevice {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ElectroDevice findOne(@PathParam(value = "id") int id) {
 		return dao.findOne(id);
+	}
+	
+	@DELETE
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public void deleteHome(@PathParam(value = "id") int id) {
+		System.out.println("supprimer");
+		dao.deleteElectro(id);
 	}
 
 }

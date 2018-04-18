@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import istic.fr.dao.daoGeneric.HeaterDao;
 import domain.Heater;
+import domain.Person;
 
 /**
  * 
@@ -83,8 +84,13 @@ public class HeaterDaoImpl implements HeaterDao {
 	 *            id of heater to delete
 	 */
 	public void deleteHeater(int id) {
-		// TODO Auto-generated method stub
-
+		Heater heater;
+		heater = manager.find(Heater.class, id);
+		if(heater != null) {
+			manager.getTransaction().begin();
+			manager.remove(heater);
+			manager.getTransaction().commit();
+		}
 	}
 
 }

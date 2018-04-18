@@ -84,8 +84,13 @@ public class ElectroDaoImpl implements DeviceDao {
 	 *            id of electrodevice to delete
 	 */
 	public void deleteElectro(int id) {
-		// TODO Auto-generated method stub
-
+		ElectroDevice electro;
+		electro = manager.find(ElectroDevice.class, id);
+		if(electro != null) {
+			manager.getTransaction().begin();
+			manager.remove(electro);
+			manager.getTransaction().commit();
+		}
 	}
 
 }

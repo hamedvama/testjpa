@@ -4,6 +4,7 @@ package istic.fr.rest;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -24,14 +25,12 @@ import domain.Heater;
 
 @Path("/hello_Heaters")
 public class SerHeater {
-	private HeaterDao home = new HeaterDaoImpl();
+	private HeaterDao daoheat = new HeaterDaoImpl();
 
 	/**
 	 * service permit to persist one heater
 	 * 
-	 * @param JsonHeater
-	 *            heater json formt
-	 * @return homes list
+	 * @return homes persisted
 	 * @throws JSONException
 	 * 						exception d'erreur de format
 	 */
@@ -39,11 +38,9 @@ public class SerHeater {
 	@Path("/CreateHeater")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public List<Heater> ajouter(JSONObject JsonHeater) throws JSONException {
-		Heater heater = new Heater();
-		heater.setName(JsonHeater.getString("name"));
-		home.Ajouter(heater);
-		return home.getAll();
+	public Heater ajouter(Heater heater) {
+		this.daoheat.Ajouter(heater);
+		return heater;
 	}
 
 	/**
@@ -51,10 +48,9 @@ public class SerHeater {
 	 * @return homes list
 	 */
 	@GET
-	@Path("/Heaters")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Heater> getAll() {
-		return home.getAll();
+		return this.daoheat.getAll();
 
 	}
 
@@ -69,7 +65,7 @@ public class SerHeater {
 	@Path("/Heaters/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Heater findOne(@PathParam(value = "id") int id) {
-		return home.findOne(id);
+		return this.daoheat.findOne(id);
 	}
 
 	/**
@@ -80,9 +76,13 @@ public class SerHeater {
 	 * @return heater list
 	 */
 
-	public List<Heater> getByPersonne(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	@DELETE
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public void deleteHome(@PathParam(value = "id") int id) {
+		System.out.println("supprimer");
+		this.daoheat.deleteHeater(id);
 	}
+	
 
 }
